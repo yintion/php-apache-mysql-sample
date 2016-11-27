@@ -1,17 +1,6 @@
 <?php
 
-require('DB.php');
 
-$db = new DB();
-
-if ($_POST) {
-    $db->add($_POST['name'], $_POST['phone']);
-}
-if ($_GET['delete']) {
-    $db->remove($_GET['delete']);
-}
-
-$contacts = $db->all();
 ?>
 
 <html>
@@ -60,18 +49,7 @@ $contacts = $db->all();
             </tr>
             </thead>
             <tbody>
-            <?php foreach ($contacts as $index => $contact) {
-                ?>
-                <tr>
-                    <th scope="row"> <?php echo $index + 1 ?></th>
-                    <td><?php echo $contact['name'] ?></td>
-                    <td><?php echo $contact['phone'] ?></td>
-                    <td>
-                        <a href="index.php?delete=<?php echo $contact['id'] ?>">删除</a>
-                    </td>
-                </tr>
-            <?php
-            } ?>
+            
             </tbody>
         </table>
 
